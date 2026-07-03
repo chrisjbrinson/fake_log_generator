@@ -14,7 +14,7 @@ A Python-based log simulator that generates realistic enterprise events and inge
 - Hourly time-based indices
 - Index State Management (3-hour retention)
 - Interactive dashboards and visualizations
-- Query DSL examples
+
 
 ## Getting Started
 
