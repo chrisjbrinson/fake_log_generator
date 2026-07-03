@@ -1,5 +1,6 @@
 import random
 import uuid
+from datetime import datetime, timezone
 
 
 JOBS = [
@@ -30,6 +31,24 @@ RUNNING_JOBS = []
 
 def create_ucmdb_event():
 
+    if RUNNING_JOBS and random.random() < 0.7:
+
+        running_job = RUNNING_JOBS.pop(0)
+
+        return {
+            "application": "UCMDB",
+            "job_id": running_job["job_id"],
+            "event_type": "discovery_job",
+            "job": running_job["job"],
+            "probe": running_job["probe"],
+            "status": "SUCCESS",
+            "severity": "INFO",
+            "duration_ms": int(
+                (datetime.now(timezone.utc) - running_job["started_at"]).total_seconds() * 1000
+            )
+        }
+
+
     job_id = str(uuid.uuid4())
 
     event = {
@@ -42,6 +61,13 @@ def create_ucmdb_event():
         "severity": "INFO"
     }
 
-    RUNNING_JOBS.append(event)
+    RUNNING_JOBS.append(
+        {
+            "job_id": job_id,
+            "job": event["job"],
+            "probe": event["probe"],
+            "started_at": datetime.now(timezone.utc)
+        }
+    )
 
     return event
