@@ -35,12 +35,28 @@ services:
     depends_on:
       - opensearch
 
+
+  opensearch-init:
+    image: curlimages/curl:latest
+    container_name: opensearch-init
+
+    depends_on:
+      - opensearch
+
+    volumes:
+      - ./opensearch:/config
+
+    entrypoint: ["/bin/sh", "/config/init.sh"]
+
+    restart: "no"
+
   generator:
     build: ./generator
     container_name: generator
 
     depends_on:
       - opensearch
+      - opensearch-init
 
 volumes:
   opensearch-data:
