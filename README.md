@@ -6,8 +6,8 @@ Currently reworking the app to run in ECS and using Amazon Opensearch domain
 
 ## Features
 
-- Python log generator
-- OpenSearch & OpenSearch Dashboards via Docker Compose
+- Python log generator running as an ECS Task
+- OpenSearch & OpenSearch Dashboards 
 - Simulated enterprise applications
   - UCMDB
   - Axonius
@@ -18,19 +18,6 @@ Currently reworking the app to run in ECS and using Amazon Opensearch domain
 - Interactive dashboards and visualizations
 
 
-## Getting Started
-
-Start the environment:
-
-```bash
-docker compose up --build
-```
-
-Open OpenSearch Dashboards:
-
-```
-http://localhost:5601
-```
 
 ## Goals
 
