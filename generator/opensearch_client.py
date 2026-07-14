@@ -30,11 +30,12 @@ def get_client():
 
     while True:
         try:
-            if client.ping():
-                print("Connected!")
-                return client
+            info = client.info()
+            print(f"Connected! {info['version']['distribution']} {info['version']['number']}")
+            return client
+
         except Exception as e:
-            print(f"Connection failed: {e}")
+            print(f"Connection failed: {repr(e)}")
 
         print("OpenSearch not ready. Waiting 5 seconds...")
         time.sleep(5)
