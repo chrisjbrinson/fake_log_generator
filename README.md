@@ -1,7 +1,8 @@
 # OpenSearch Enterprise Log Simulator
 
 A Python-based log simulator that generates realistic enterprise events and ingests them into OpenSearch for learning and experimentation.
-Make sure to change the OpenSearch admin password
+
+Currently reworking the app to run in ECS and using Amazon Opensearch domain
 
 ## Features
 
