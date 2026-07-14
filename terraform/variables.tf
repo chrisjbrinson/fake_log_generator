@@ -27,3 +27,14 @@ variable "opensearch_version" {
   description = "OpenSearch engine version"
   type        = string
 }
+
+variable "opensearch_username" {
+  description = "OpenSearch admin username"
+  type        = string
+}
+
+variable "opensearch_password" {
+  description = "OpenSearch admin password"
+  type        = string
+  sensitive   = true
+}
