@@ -14,8 +14,7 @@ For simplicity, the OpenSearch domain is publicly accessible in this lab. In pro
   - AWS Discovery
   - Terraform
 - Hourly time-based indices
-- Index State Management (3-hour retention)
-- Interactive dashboards and visualizations
+
 
 
 
@@ -33,6 +32,8 @@ This project is a hands-on lab for learning:
 
 ## Roadmap
 
+- Index State Management (3-hour retention)
+- Interactive dashboards and visualizations
 - Additional enterprise simulators
 - Alerting
 - Index templates
