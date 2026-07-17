@@ -20,13 +20,60 @@ resource "opensearch_index_template" "logs" {
 
         number_of_shards   = 1
         number_of_replicas = 0
+        refresh_interval   = "5s"
+      }
 
-        refresh_interval = "5s"
+      mappings = {
 
-        plugins = {
-            index_state_management = {
-                policy_id = opensearch_ism_policy.logs.policy_id
-            }
+        properties = {
+
+          "@timestamp" = {
+            type = "date"
+          }
+
+          application = {
+            type = "keyword"
+          }
+
+          event_type = {
+            type = "keyword"
+          }
+
+          status = {
+            type = "keyword"
+          }
+
+          severity = {
+            type = "keyword"
+          }
+
+          duration_ms = {
+            type = "long"
+          }
+
+          job_id = {
+            type = "keyword"
+          }
+
+          job = {
+            type = "keyword"
+          }
+
+          probe = {
+            type = "keyword"
+          }
+
+          adapter = {
+            type = "keyword"
+          }
+
+          devices_imported = {
+            type = "integer"
+          }
+
+          error = {
+            type = "keyword"
+          }
         }
       }
     }
@@ -61,7 +108,6 @@ resource "opensearch_ism_policy" "logs" {
               }
             }
           ]
-        
         },
 
         {
@@ -79,8 +125,10 @@ resource "opensearch_ism_policy" "logs" {
 
       ism_template = [
         {
-            index_patterns = ["logs-*"]
-            priority = 100
+          index_patterns = [
+            "logs-*"
+          ]
+          priority = 100
         }
       ]
     }
